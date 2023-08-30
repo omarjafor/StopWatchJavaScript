@@ -1,7 +1,7 @@
 window.onload = function(){
-
-    var seconds = 00;
-    var tens = 00;
+    
+    var seconds = 0;
+    var tens = 0;
 
     var appendTens = document.getElementById("tens");
     var appendSeconds = document.getElementById("seconds");
