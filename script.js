@@ -1,57 +1,46 @@
-window.onload = function(){
-    
-    var seconds = 0;
-    var tens = 0;
+let milesec = 0;
+let sec = 0; 
 
-    var appendTens = document.getElementById("tens");
-    var appendSeconds = document.getElementById("seconds");
-    var buttonStart = this.document.getElementById("button-start");
-    var buttonStop = this.document.getElementById("button-stop");
-    var buttonReset = this.document.getElementById("button-reset");
+let appendMilesec = document.getElementById('tens');
+let appendSec = document.getElementById('seconds');
+let buttonStart = document.getElementById('button-start');
+let buttonPause = document.getElementById('button-stop');
+let buttonReset = document.getElementById('button-reset');
 
-    var Interval;
+var Interval;
 
-                /*First Step*/
-    /*first function that start timer working*/
-    function startTimer(){
-        tens++;
-        //console.log(tens);
-        if(tens < 9){
-            appendTens.innerHTML = "0" + tens;
-        }
-        if(tens > 9){
-            appendTens.innerHTML = tens;
-        }
-        if(tens > 99){
-            seconds++;
-            console.log(seconds);
-            appendSeconds.innerHTML = "0" + seconds;
-            tens = 0;
-            appendTens.innerHTML = "0" + tens;
-        }
-        if(seconds > 9){
-            appendSeconds.innerHTML = seconds;
-        }
+function startWatch(){
+    milesec++;
+    if(milesec < 9){
+        appendMilesec.innerHTML = '0'+ milesec;
     }
-    /*Button to Start Timer*/
-    buttonStart.onclick = function(){
-        clearInterval(Interval);
-        Interval = setInterval(startTimer, 10);
+    if(milesec > 9){
+        appendMilesec.innerHTML = milesec;
     }
-
-    /*Button to Stop Timer*/
-    buttonStop.onclick = function(){
-        clearInterval(Interval);
+    if( milesec > 99){
+        sec++;
+        appendSec.innerHTML = '0' + sec;
+        milesec = 0;
+        appendMilesec.innerHTML = '0' + milesec;
     }
-
-    /*Button to Resst Timer*/
-    buttonReset.onclick = function(){
-        clearInterval(Interval);
-        tens = "00";
-        seconds = "00";
-        appendTens.innerHTML = tens;
-        appendSeconds.innerHTML = seconds;
+    if(sec > 9){
+        appendSec.innerHTML = sec;
     }
+}
 
-           
+buttonStart.onclick = function(){
+    clearInterval(Interval);
+    Interval = setInterval(startWatch, 10);
+}
+
+buttonPause.onclick = function(){
+    clearInterval(Interval);
+}
+
+buttonReset.onclick = function(){
+    clearInterval(Interval);
+    milesec = 0;
+    sec = 0;
+    appendMilesec.innerHTML = '0' + milesec;
+    appendSec.innerHTML = '0' + sec;
 }
